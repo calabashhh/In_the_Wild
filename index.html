@@ -10,6 +10,28 @@
   <img src="red-panda.webp" alt="Hi! I'm a red panda and I love Olive.">
   <p>Red Panda</p>
 
+  <h1>Mochi the Pet</h1>
+
+<div id="pet">🐱</div>
+<p id="message">Mochi is waiting for you.</p>
+
+<button onclick="feedPet()">Feed</button>
+<button onclick="petPet()">Pet</button>
+<button onclick="playPet()">Play</button>
+
+<script>
+  function feedPet() {
+    document.getElementById("message").textContent = "Mochi ate a snack!";
+  }
+
+  function petPet() {
+    document.getElementById("message").textContent = "Mochi purrs happily!";
+  }
+
+  function playPet() {
+    document.getElementById("message").textContent = "Mochi is having fun!";
+  }
+</script>
 
 
   
