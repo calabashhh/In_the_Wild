@@ -4,24 +4,27 @@
   <title>In the Wild</title>
 
   <style>
-    #panda-area {
+   #panda-area {
       position: relative;
       width: 750px;
       height: 600px;
     }
-
+    
     #panda-photo {
       width: 750px;
       height: 600px;
+      position: relative;
+      z-index: 1;
     }
-
+    
     #bamboo {
       position: absolute;
-      width: 120px;
+      width: 300px;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
       display: none;
+      z-index: 2;
       pointer-events: none;
     }
   </style>
