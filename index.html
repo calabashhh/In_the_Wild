@@ -1,37 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>In the Wild</title>
+<head>
+  <title>In the Wild</title>
 
+  <style>
+    #panda-area {
+      position: relative;
+      width: 750px;
+      height: 600px;
+    }
+
+    #panda-photo {
+      width: 750px;
+      height: 600px;
+    }
+
+    #bamboo {
+      position: absolute;
+      width: 120px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: none;
+    }
+  </style>
 </head>
-  
+
 <body>
   <h1>In the Wild</h1>
-  
-  <img src="red-panda.webp" alt="Hi! I'm a red panda and I love Olive." style="width:750px;height:600px;">
-  
-<p id="message">Mochi the Red Panda is waiting for you.</p>
 
-<button onclick="feedPet()">Feed</button>
-<button onclick="petPet()">Pet</button>
-<button onclick="playPet()">Play</button>
+  <label for="nameInput">What do you want to name the red panda?</label>
+  <input id="nameInput" type="text" placeholder="Type a name">
+  <button onclick="namePanda()">Name Panda</button>
 
-<script>
-  function feedPet() {
-    document.getElementById("message").textContent = "Mochi ate a snack!";
-  }
+  <div id="panda-area">
+    <img id="panda-photo" src="red-panda.webp" alt="A red panda">
+    <img id="bamboo" src="bamboo.png" alt="Bamboo">
+  </div>
 
-  function petPet() {
-    document.getElementById("message").textContent = "Mochi purrs happily!";
-  }
+  <p id="message">The red panda is waiting for you.</p>
 
-  function playPet() {
-    document.getElementById("message").textContent = "Mochi is having fun!";
-  }
-</script>
+  <button onclick="feedPet()">Feed</button>
+  <button onclick="petPet()">Pet</button>
+  <button onclick="playPet()">Play</button>
 
+  <script>
+    let pandaName = "The red panda";
+    let bambooIsShowing = false;
 
-  
+    function namePanda() {
+      const name = document.getElementById("nameInput").value;
+
+      if (name !== "") {
+        pandaName = name;
+        document.getElementById("message").textContent = pandaName + " is waiting for you.";
+      }
+    }
+
+    function feedPet() {
+      if (bambooIsShowing === true) {
+        return;
+      }
+
+      bambooIsShowing = true;
+
+      document.getElementById("message").textContent = pandaName + " is eating bamboo!";
+      document.getElementById("bamboo").style.display = "block";
+
+      setTimeout(function() {
+        document.getElementById("bamboo").style.display = "none";
+        document.getElementById("message").textContent = pandaName + " ate the bamboo!";
+        bambooIsShowing = false;
+      }, 1000);
+    }
+
+    function petPet() {
+      document.getElementById("message").textContent = pandaName + " purrs happily!";
+    }
+
+    function playPet() {
+      document.getElementById("message").textContent = pandaName + " is having fun!";
+    }
+  </script>
 </body>
-
-</html>  
+</html>
